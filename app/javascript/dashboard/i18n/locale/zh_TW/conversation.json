@@ -96,6 +96,10 @@
         "NEXT_WEEK": "下週"
       }
     },
+    "MENTION": {
+      "AGENTS": "客服",
+      "TEAMS": "團隊"
+    },
     "CUSTOM_SNOOZE": {
       "TITLE": "Snooze until",
       "APPLY": "Snooze",
@@ -308,6 +312,7 @@
       "CONTACT_ATTRIBUTES": "聯絡人屬性",
       "PREVIOUS_CONVERSATION": "上一次對話",
       "MACROS": "Macros",
+      "LINEAR_ISSUES": "Linked Linear Issues",
       "SHOPIFY_ORDERS": "Shopify Orders"
     },
     "SHOPIFY": {

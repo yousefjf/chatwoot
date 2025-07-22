@@ -96,6 +96,10 @@
         "NEXT_WEEK": "Pròxima setmana"
       }
     },
+    "MENTION": {
+      "AGENTS": "Agents",
+      "TEAMS": "Equips"
+    },
     "CUSTOM_SNOOZE": {
       "TITLE": "Posposat fins a",
       "APPLY": "Posposat",
@@ -308,6 +312,7 @@
       "CONTACT_ATTRIBUTES": "Atributs de contacte",
       "PREVIOUS_CONVERSATION": "Converses prèvies",
       "MACROS": "Macros",
+      "LINEAR_ISSUES": "Linked Linear Issues",
       "SHOPIFY_ORDERS": "Shopify Orders"
     },
     "SHOPIFY": {

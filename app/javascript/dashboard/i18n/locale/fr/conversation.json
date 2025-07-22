@@ -96,6 +96,10 @@
         "NEXT_WEEK": "Semaine prochaine"
       }
     },
+    "MENTION": {
+      "AGENTS": "Agents",
+      "TEAMS": "Équipes"
+    },
     "CUSTOM_SNOOZE": {
       "TITLE": "Reporter jusqu'à",
       "APPLY": "Reporter",
@@ -308,6 +312,7 @@
       "CONTACT_ATTRIBUTES": "Attributs du contact",
       "PREVIOUS_CONVERSATION": "Conversations précédentes",
       "MACROS": "Macros",
+      "LINEAR_ISSUES": "Linked Linear Issues",
       "SHOPIFY_ORDERS": "Shopify Orders"
     },
     "SHOPIFY": {

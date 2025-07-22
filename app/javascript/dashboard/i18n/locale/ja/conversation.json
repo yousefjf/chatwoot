@@ -96,6 +96,10 @@
         "NEXT_WEEK": "次週"
       }
     },
+    "MENTION": {
+      "AGENTS": "担当者",
+      "TEAMS": "チーム"
+    },
     "CUSTOM_SNOOZE": {
       "TITLE": "までスヌーズする",
       "APPLY": "スヌーズ",
@@ -308,6 +312,7 @@
       "CONTACT_ATTRIBUTES": "連絡先属性",
       "PREVIOUS_CONVERSATION": "以前の会話",
       "MACROS": "マクロ",
+      "LINEAR_ISSUES": "Linked Linear Issues",
       "SHOPIFY_ORDERS": "Shopify Orders"
     },
     "SHOPIFY": {

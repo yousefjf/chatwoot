@@ -96,6 +96,10 @@
         "NEXT_WEEK": "Minggu depan"
       }
     },
+    "MENTION": {
+      "AGENTS": "Agen",
+      "TEAMS": "Tim"
+    },
     "CUSTOM_SNOOZE": {
       "TITLE": "Tunda hingga",
       "APPLY": "Tunda",
@@ -308,6 +312,7 @@
       "CONTACT_ATTRIBUTES": "Atribut Kontak",
       "PREVIOUS_CONVERSATION": "Percakapan Sebelumnya",
       "MACROS": "Makro",
+      "LINEAR_ISSUES": "Linked Linear Issues",
       "SHOPIFY_ORDERS": "Shopify Orders"
     },
     "SHOPIFY": {

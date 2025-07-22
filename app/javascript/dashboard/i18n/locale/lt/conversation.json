@@ -96,6 +96,10 @@
         "NEXT_WEEK": "Kitą savaitę"
       }
     },
+    "MENTION": {
+      "AGENTS": "Agentai",
+      "TEAMS": "Komandos"
+    },
     "CUSTOM_SNOOZE": {
       "TITLE": "Atidėti iki",
       "APPLY": "Atidėti",
@@ -308,6 +312,7 @@
       "CONTACT_ATTRIBUTES": "Kontakto Požymiai",
       "PREVIOUS_CONVERSATION": "Ankstesni pokalbiai",
       "MACROS": "Makrokomandos",
+      "LINEAR_ISSUES": "Linked Linear Issues",
       "SHOPIFY_ORDERS": "Shopify Orders"
     },
     "SHOPIFY": {
