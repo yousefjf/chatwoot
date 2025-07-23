@@ -16,7 +16,7 @@ export default [
       },
     },
     availabilityStatus: 'offline',
-    email: 'candice.matherson@chatwoot.com',
+    email: 'candice.matherson@goftina.com',
     id: 22,
     name: 'Candice Matherson',
     phoneNumber: '+14155552671',

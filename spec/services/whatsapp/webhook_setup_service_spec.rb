@@ -35,16 +35,16 @@ describe Whatsapp::WebhookSetupService do
       end
 
       it 'registers the phone number' do
-        with_modified_env FRONTEND_URL: 'https://app.chatwoot.com' do
+        with_modified_env FRONTEND_URL: 'https://app.goftina.com' do
           expect(api_client).to receive(:register_phone_number).with('123456789', 223_456)
           service.perform
         end
       end
 
       it 'sets up webhook subscription' do
-        with_modified_env FRONTEND_URL: 'https://app.chatwoot.com' do
+        with_modified_env FRONTEND_URL: 'https://app.goftina.com' do
           expect(api_client).to receive(:subscribe_waba_webhook)
-            .with(waba_id, 'https://app.chatwoot.com/webhooks/whatsapp/+1234567890', 'test_verify_token')
+            .with(waba_id, 'https://app.goftina.com/webhooks/whatsapp/+1234567890', 'test_verify_token')
           service.perform
         end
       end
@@ -60,7 +60,7 @@ describe Whatsapp::WebhookSetupService do
       end
 
       it 'continues with webhook setup' do
-        with_modified_env FRONTEND_URL: 'https://app.chatwoot.com' do
+        with_modified_env FRONTEND_URL: 'https://app.goftina.com' do
           expect(api_client).to receive(:subscribe_waba_webhook)
           expect { service.perform }.not_to raise_error
         end
@@ -76,7 +76,7 @@ describe Whatsapp::WebhookSetupService do
       end
 
       it 'raises an error' do
-        with_modified_env FRONTEND_URL: 'https://app.chatwoot.com' do
+        with_modified_env FRONTEND_URL: 'https://app.goftina.com' do
           expect { service.perform }.to raise_error(/Webhook setup failed/)
         end
       end
@@ -108,7 +108,7 @@ describe Whatsapp::WebhookSetupService do
       end
 
       it 'reuses existing PIN' do
-        with_modified_env FRONTEND_URL: 'https://app.chatwoot.com' do
+        with_modified_env FRONTEND_URL: 'https://app.goftina.com' do
           expect(api_client).to receive(:register_phone_number).with('123456789', 123_456)
           expect(SecureRandom).not_to receive(:random_number)
           service.perform

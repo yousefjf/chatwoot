@@ -28,7 +28,7 @@ export default {
     brandRedirectURL() {
       try {
         const referrerHost = this.$store.getters['appConfig/getReferrerHost'];
-        const baseURL = `${this.globalConfig.widgetBrandURL}?utm_source=${
+        const baseURL = `https://goftina.com/?utm_source=${
           referrerHost ? 'widget_branding' : 'survey_branding'
         }`;
         if (referrerHost) {

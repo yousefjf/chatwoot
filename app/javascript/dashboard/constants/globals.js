@@ -31,10 +31,10 @@ export default {
     CONDENSED: 'condensed',
     EXPANDED: 'expanded',
   },
-  DOCS_URL: 'https://www.chatwoot.com/docs/product/',
+  DOCS_URL: 'https://goftina.com/docs/product/',
   HELP_CENTER_DOCS_URL:
-    'https://www.chatwoot.com/docs/product/others/help-center',
-  TESTIMONIAL_URL: 'https://testimonials.cdn.chatwoot.com/content.json',
+    'https://goftina.com/docs/product/others/help-center',
+  TESTIMONIAL_URL: 'https://testimonials.cdn.goftina.com/content.json',
   SMALL_SCREEN_BREAKPOINT: 1200,
   AVAILABILITY_STATUS_KEYS: ['online', 'busy', 'offline'],
   SNOOZE_OPTIONS: {
