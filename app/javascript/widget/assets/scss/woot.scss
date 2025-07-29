@@ -35,12 +35,17 @@ body {
 .message-content {
   ul {
     list-style: disc;
-    @apply ltr:pl-3 rtl:pr-3;
+    @apply pl-3;
   }
 
   ol {
     list-style: decimal;
-    @apply ltr:pl-4 rtl:pr-4;
+    @apply pl-4;
+  }
+
+  html[dir="rtl"] & {
+    direction: rtl;
+    text-align: right;
   }
 }
 
@@ -91,7 +96,7 @@ textarea {
 }
 
 select:not(.reset-base) {
-  @apply bg-n-background dark:bg-n-alpha-2 w-full p-2.5 border-none outline outline-1 outline-offset-[-1px] outline-n-weak rounded-lg text-n-slate-12 text-base ltr:pr-10 rtl:pl-10 font-normal ltr:bg-[right_-1.6rem_center] rtl:bg-[left_-1.6rem_center] focus:outline-n-brand focus:ring-1 focus:ring-n-brand;
+  @apply bg-n-background dark:bg-n-alpha-2 w-full p-2.5 border-none outline outline-1 outline-offset-[-1px] outline-n-weak rounded-lg text-n-slate-12 text-base pr-10 font-normal bg-[right_-1.6rem_center] focus:outline-n-brand focus:ring-1 focus:ring-n-brand;
 
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -116,7 +121,7 @@ pre {
 }
 
 blockquote {
-  @apply ltr:border-l-4 rtl:border-r-4 border-n-slate-3 dark:border-n-alpha-2 border-solid my-1 px-0 text-n-slate-11 py-1 ltr:pr-2 rtl:pr-4 ltr:pl-4 rtl:pl-2;
+  @apply border-l-4 border-n-slate-3 dark:border-n-alpha-2 border-solid my-1 px-0 text-n-slate-11 py-1 pr-2 pl-4;
 }
 
 .button {

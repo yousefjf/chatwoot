@@ -4,7 +4,7 @@
 
 .conversation-wrap {
   .agent-message {
-    @apply items-end flex flex-row justify-start mt-0 ltr:mr-0 rtl:mr-2 mb-0.5 ltr:ml-2 rtl:ml-0 max-w-[88%];
+    @apply items-end flex flex-row justify-start mt-0 mr-0 mb-0.5 ml-2 max-w-[88%];
 
     .avatar-wrap {
       @apply flex-shrink-0 h-6 w-6;
@@ -15,7 +15,7 @@
     }
 
     .message-wrap {
-      @apply flex-grow flex-shrink-0 ltr:ml-2 rtl:mr-2 max-w-[90%];
+      @apply flex-grow flex-shrink-0 ml-2 max-w-[90%];
     }
   }
 
@@ -32,7 +32,7 @@
   }
 
   .agent-name {
-    @apply text-xs font-medium my-2 ltr:pl-0.5 rtl:pr-0.5;
+    @apply text-xs font-medium my-2 pl-0.5;
   }
 
   .has-attachment {
@@ -52,7 +52,7 @@
       @apply mt-0.5;
 
       .agent-message .chat-bubble {
-        @apply ltr:rounded-tl-[0.25rem] rtl:rounded-tr-[0.25rem];
+        @apply rounded-tl-[0.25rem];
       }
     }
 
@@ -64,7 +64,7 @@
       @apply mt-0.5;
 
       .chat-bubble {
-        @apply ltr:rounded-tr-[0.25rem] rtl:rounded-tl-[0.25rem];
+        @apply rounded-tr-[0.25rem];
       }
     }
 
@@ -74,10 +74,10 @@
   }
 
   .user-message {
-    @apply flex items-end flex-row justify-end max-w-[85%] ltr:text-right rtl:text-left mt-0 ltr:ml-auto rtl:mr-auto ltr:mr-1 rtl:ml-1 mb-0.5;
+    @apply flex items-end flex-row justify-end max-w-[85%] text-right mt-0 ml-auto mr-1 mb-0.5;
 
     .message-wrap {
-      @apply max-w-full ltr:mr-2 rtl:ml-2;
+      @apply max-w-full mr-2;
     }
 
     .in-progress {
@@ -108,7 +108,7 @@
       @apply mt-0.5;
 
       .user-message .chat-bubble {
-        @apply ltr:rounded-tr-[0.25rem] rtl:rounded-tl-[0.25rem];
+        @apply rounded-tr-[0.25rem];
       }
     }
 
@@ -138,32 +138,32 @@
 
     + .chat-bubble-wrap {
       .chat-bubble {
-        @apply ltr:rounded-tl-[0.25rem] rtl:rounded-tr-[0.25rem];
+        @apply rounded-tl-[0.25rem];
       }
     }
 
     &:last-child .chat-bubble {
-      @apply ltr:rounded-bl-[1.25rem] rtl:rounded-br-[1.25rem];
+      @apply rounded-bl-[1.25rem];
     }
   }
 }
 
 .is-widget-right .unread-wrap {
-  @apply ltr:text-right rtl:text-left overflow-hidden;
+  @apply text-right overflow-hidden;
 
   .chat-bubble-wrap {
     .chat-bubble {
-      @apply ltr:rounded-br-[0.25rem] rtl:rounded-bl-[0.25rem] rounded-[1.25rem];
+      @apply rounded-br-[0.25rem] rounded-[1.25rem];
     }
 
     + .chat-bubble-wrap {
       .chat-bubble {
-        @apply ltr:rounded-tr-[0.25rem] rtl:rounded-tl-[0.25rem];
+        @apply rounded-tr-[0.25rem];
       }
     }
 
     &:last-child .chat-bubble {
-      @apply ltr:rounded-br-[1.25rem] rtl:rounded-bl-[1.25rem];
+      @apply rounded-br-[1.25rem];
     }
   }
 
@@ -173,9 +173,13 @@
 }
 
 .chat-bubble {
-  @apply shadow-[0_0.25rem_6px_rgba(50,50,93,0.08),0_1px_3px_rgba(0,0,0,0.05)] rounded-[1.25rem] inline-block text-sm leading-[1.5] max-w-full ltr:text-left rtl:text-right py-3 px-4 text-white;
+  @apply shadow-[0_0.25rem_6px_rgba(50,50,93,0.08),0_1px_3px_rgba(0,0,0,0.05)] rounded-[1.25rem] inline-block text-sm leading-[1.5] max-w-full text-start py-3 px-4 text-white;
 
   word-break: break-word;
+  // Let the browser decide the text direction based on the first strong character.
+  direction: auto;
+  // This helps in correctly displaying mixed direction text (e.g. LTR text inside RTL message).
+  unicode-bidi: plaintext;
 
   :not([audio]) {
     max-width: 100%;
@@ -191,7 +195,7 @@
   }
 
   &.user {
-    @apply ltr:rounded-br-[0.25rem] rtl:rounded-bl-[0.25rem];
+    @apply rounded-br-[0.25rem];
 
     > a {
       @apply text-white;
@@ -199,7 +203,7 @@
   }
 
   &.agent {
-    @apply ltr:rounded-bl-[0.25rem] rtl:rounded-br-[0.25rem] text-n-slate-12;
+    @apply rounded-bl-[0.25rem] text-n-slate-12;
 
     .link {
       @apply text-n-brand;

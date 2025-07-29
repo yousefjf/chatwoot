@@ -10,6 +10,10 @@ export default {
     ...mapGetters({
       groupedMessages: 'conversation/getGroupedConversation',
     }),
+    isRTL() {
+      // This reliably checks the direction set on the root HTML element by App.vue
+      return document.documentElement.dir === 'rtl';
+    },
   },
   mounted() {
     this.$store.dispatch('conversation/setUserLastSeen');
@@ -20,6 +24,7 @@ export default {
 <template>
   <div
     class="flex flex-col flex-1 overflow-hidden rounded-b-lg bg-n-slate-2 dark:bg-n-solid-1"
+    :dir="isRTL ? 'ltr' : null"
   >
     <div class="flex flex-1 overflow-auto">
       <ConversationWrap :grouped-messages="groupedMessages" />
