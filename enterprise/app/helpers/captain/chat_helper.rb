@@ -26,10 +26,39 @@ module Captain::ChatHelper
     if message['tool_calls']
       process_tool_calls(message['tool_calls'])
     else
-      message = JSON.parse(message['content'].strip)
+      content = message['content']
+      Rails.logger.debug { "#{self.class.name} Assistant: #{@assistant.id}, Raw content: #{content}" }
+      cleaned_content = clean_json_content(content)
+      Rails.logger.debug { "#{self.class.name} Assistant: #{@assistant.id}, Cleaned content: #{cleaned_content}" }
+      message = JSON.parse(cleaned_content)
       persist_message(message, 'assistant')
       message
     end
+  end
+
+  def clean_json_content(content)
+    # Remove markdown code blocks and extract JSON
+    cleaned = content.strip
+    
+    # Handle various markdown formats
+    # Remove ```json at the beginning
+    cleaned = cleaned.gsub(/^```json\s*/i, '')
+    # Remove ``` at the end
+    cleaned = cleaned.gsub(/```\s*$/i, '')
+    # Remove any remaining ``` markers
+    cleaned = cleaned.gsub(/```/i, '')
+    
+    # Remove any leading/trailing whitespace and newlines
+    cleaned = cleaned.strip
+    
+    # If the content still doesn't look like valid JSON, try to extract JSON from it
+    unless cleaned.start_with?('{') || cleaned.start_with?('[')
+      # Try to find JSON object in the content
+      json_match = cleaned.match(/\{.*\}/m)
+      cleaned = json_match[0] if json_match
+    end
+    
+    cleaned
   end
 
   def process_tool_calls(tool_calls)

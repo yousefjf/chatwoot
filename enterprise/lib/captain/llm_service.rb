@@ -4,6 +4,7 @@ class Captain::LlmService
   def initialize(config)
     @client = OpenAI::Client.new(
       access_token: config[:api_key],
+      uri_base: 'https://openrouter.ai/api/v1',
       log_errors: Rails.env.development?
     )
     @logger = Rails.logger

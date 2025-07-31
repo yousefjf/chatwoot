@@ -16,9 +16,9 @@ class Captain::Llm::ConversationFaqService < Llm::BaseOpenAiService
     new_faqs = generate
     return [] if new_faqs.empty?
 
-    duplicate_faqs, unique_faqs = find_and_separate_duplicates(new_faqs)
-    save_new_faqs(unique_faqs)
-    log_duplicate_faqs(duplicate_faqs) if Rails.env.development?
+    # Embedding/deduplication is disabled: save all new FAQs
+    save_new_faqs(new_faqs)
+    Rails.logger.info("FAQ deduplication is disabled; all new FAQs are saved.") if Rails.env.development?
   end
 
   private
@@ -29,32 +29,7 @@ class Captain::Llm::ConversationFaqService < Llm::BaseOpenAiService
     conversation.first_reply_created_at.nil?
   end
 
-  def find_and_separate_duplicates(faqs)
-    duplicate_faqs = []
-    unique_faqs = []
-
-    faqs.each do |faq|
-      combined_text = "#{faq['question']}: #{faq['answer']}"
-      embedding = Captain::Llm::EmbeddingService.new.get_embedding(combined_text)
-      similar_faqs = find_similar_faqs(embedding)
-
-      if similar_faqs.any?
-        duplicate_faqs << { faq: faq, similar_faqs: similar_faqs }
-      else
-        unique_faqs << faq
-      end
-    end
-
-    [duplicate_faqs, unique_faqs]
-  end
-
-  def find_similar_faqs(embedding)
-    similar_faqs = assistant
-                   .responses
-                   .nearest_neighbors(:embedding, embedding, distance: 'cosine')
-    Rails.logger.debug(similar_faqs.map { |faq| [faq.question, faq.neighbor_distance] })
-    similar_faqs.select { |record| record.neighbor_distance < DISTANCE_THRESHOLD }
-  end
+  # The deduplication methods are now unused and can be ignored
 
   def save_new_faqs(faqs)
     faqs.map do |faq|
@@ -63,19 +38,6 @@ class Captain::Llm::ConversationFaqService < Llm::BaseOpenAiService
         answer: faq['answer'],
         status: 'pending',
         documentable: conversation
-      )
-    end
-  end
-
-  def log_duplicate_faqs(duplicate_faqs)
-    return if duplicate_faqs.empty?
-
-    Rails.logger.info "Found #{duplicate_faqs.length} duplicate FAQs:"
-    duplicate_faqs.each do |duplicate|
-      Rails.logger.info(
-        "Q: #{duplicate[:faq]['question']}\n" \
-        "A: #{duplicate[:faq]['answer']}\n\n" \
-        "Similar existing FAQs: #{duplicate[:similar_faqs].map { |f| "Q: #{f.question} A: #{f.answer}" }.join(', ')}"
       )
     end
   end

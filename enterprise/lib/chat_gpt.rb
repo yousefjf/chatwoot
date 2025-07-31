@@ -1,6 +1,6 @@
 class ChatGpt
   def self.base_uri
-    'https://api.openai.com'
+    'https://openrouter.ai/api'
   end
 
   def initialize(context_sections = '')

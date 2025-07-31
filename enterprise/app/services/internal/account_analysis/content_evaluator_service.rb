@@ -2,7 +2,7 @@ class Internal::AccountAnalysis::ContentEvaluatorService < Llm::BaseOpenAiServic
   def initialize
     super()
 
-    @model = 'gpt-4o-mini'.freeze
+    @model = 'google/gemini-2.5-flash-lite'.freeze
   end
 
   def evaluate(content)
